@@ -11,16 +11,19 @@
   "author": "leddzip",
   "license": "ISC",
   "scripts": {
-    "test": "jest --config jestconfig.json",
-    "it": "echo TODO && exit 1",
     "clean": "rm -rf generators",
+    "test": "jest --config jestconfig.json",
+    "preit": "npm run build",
+    "it": "cucumber-js",
+    "postit": "npm run clean",
     "prebuild": "npm run clean",
-    "build": "npx tsc"
+    "build": "tsc"
   },
   "dependencies": {
     "yeoman-generator": "^5.7.0"
   },
   "devDependencies": {
+    "@cucumber/cucumber": "^8.9.1",
     "@types/jest": "^29.2.4",
     "@types/yeoman-generator": "^5.2.11",
     "jest": "^29.3.1",

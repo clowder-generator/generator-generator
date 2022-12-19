@@ -20,6 +20,8 @@ export default class MyGeneratorToRename extends Generator<GeneratorOptions> imp
 
     public initializing() {
         printer();
+        printer();
+        printer();
     }
 
 }
