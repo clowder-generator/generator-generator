@@ -1,4 +1,3 @@
-# Created by ludovic at 25/12/2022
 Feature: Basic generation
   A basic generator generation with one prompt and no args
 
