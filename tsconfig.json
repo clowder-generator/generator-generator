@@ -8,7 +8,7 @@
     "forceConsistentCasingInFileNames": true,
     "sourceMap": true,
     "outDir": "generators",
-    "rootDir": "src"
+    "rootDir": "src-bis"
   },
   "exclude": [
     "node_modules",
