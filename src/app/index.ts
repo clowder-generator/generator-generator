@@ -59,7 +59,7 @@ export default class MyGeneratorToRename extends Generator<GeneratorOptions> imp
     public writing() {
         this.fs.copyTpl(
             this.templatePath("**/*"),
-            this.destinationPath(this.context?.folderName!),
+            this.destinationPath(),
             {
                 index_ts_name: this.context?.generatorName,
                 circleci_name: this.context?.circleci.tokenSuffix,

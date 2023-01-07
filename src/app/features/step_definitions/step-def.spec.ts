@@ -26,8 +26,19 @@ When('I call it with the following prompt answer', async function (this: CustomW
         promptSetup[prompt as PromptKey] = answer;
      }
      this.runContext?.withPrompts(promptSetup);
-    // this.runResult = await this.runContext?.run()
 
+    this.runResult = await this.runContext?.run();
+});
+
+When('I call it with valid prompt', async function (this: CustomWorld) {
+    let promptSetup = {
+        folderName: "base-default",
+        name: "npm-name-default",
+        version: "npm-version-default",
+        description: "npm-description-default"
+    };
+
+    this.runContext?.withPrompts(promptSetup);
     this.runResult = await this.runContext?.run();
 });
 
@@ -44,3 +55,16 @@ Then('I should have a file {string} with the content', function (this: CustomWor
 
     this.runResult.assertFileContent("generated.md", docString)
 });
+
+
+Then('I should have the following CICD files', assertFileExist);
+Then('I should have the following config files', assertFileExist);
+Then('I should have the following sources files', assertFileExist);
+Then('I should have the following feature files', assertFileExist);
+Then('I should have the following template files', assertFileExist);
+Then('I should have the following files', assertFileExist);
+function assertFileExist(this: CustomWorld, dataTable: DataTable){
+    for (const filePath of dataTable.rows()) {
+        this.runResult?.assertFile(filePath);
+    }
+}

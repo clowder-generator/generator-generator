@@ -17,7 +17,7 @@
     "it": "cucumber-js",
     "postit": "npm run clean",
     "prebuild": "npm run clean",
-    "build": "tsc && cp -r src-bis/app/templates generators/app/templates"
+    "build": "tsc && cp -r src/app/templates generators/app/templates"
   },
   "dependencies": {
     "@clowder-generator/utils": "^0.5.1",
