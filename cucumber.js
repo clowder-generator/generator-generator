@@ -1,7 +1,17 @@
 module.exports = {
-    default: `src/app/features/**/*.feature`
-        + ` --format-options '{"snippetInterface": "synchronous"}'`
-        + ` --publish-quiet`
-        + ` --require-module ts-node/register`
-        + ` --require src/app/features/**/*.spec.ts`
+    default: {
+        paths: [
+            "src/app/features/**/*.feature"
+        ],
+        formatOptions: {
+            snippetInterface: "synchronous"
+        },
+        publishQuiet: true,
+        requireModule: [
+            "ts-node/register"
+        ],
+        require: [
+            "src/app/features/**/*.spec.ts"
+        ]
+    }
 }

@@ -5,13 +5,9 @@ import helpers from "yeoman-test";
 import * as path from "path";
 
 Given('a generator', function (this: CustomWorld) {
-    // Write code here that turns the phrase above into concrete actions
-    console.log("empty")
     this.runContext = helpers.create(
-        // MyGeneratorToRename
         path.join(__dirname, "../../../../generators/app")
     )
-
 });
 
 
@@ -32,7 +28,6 @@ When('I call it with the following prompt answer', async function (this: CustomW
 
 When('I call it with valid prompt', async function (this: CustomWorld) {
     let promptSetup = {
-        folderName: "base-default",
         name: "npm-name-default",
         version: "npm-version-default",
         description: "npm-description-default"

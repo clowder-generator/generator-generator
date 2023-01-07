@@ -12,6 +12,7 @@ Feature: Basic generation
     When I call it with valid prompt
     Then I should have the following config files
       | fileName             |
+      | .yo-rc.json          |
       | .gitignore           |
       | .nvmrc               |
       | jestconfig.json      |

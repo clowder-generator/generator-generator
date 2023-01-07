@@ -3,10 +3,6 @@ import {GeneratorContext} from "./index";
 import {NPM} from "./questions/NPM";
 import {fromKebabCase} from "@clowder-generator/utils";
 
-export const mergeBaseAnswerIntoContext = (generatorContext: GeneratorContext, baseAnswer: Base.Answer) => {
-    generatorContext.folderName = baseAnswer.folderName;
-};
-
 export const mergeNPMAnswerIntoContext = (generatorContext: GeneratorContext, npmAnswer: NPM.Answer) => {
     generatorContext.generatorName = fromKebabCase(npmAnswer.name).toPascalCase();
 

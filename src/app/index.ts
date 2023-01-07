@@ -2,10 +2,9 @@ import Generator, {GeneratorOptions} from "yeoman-generator";
 import {Base} from "./questions/Base";
 import {IYeomanGenerator} from "@clowder-generator/utils";
 import {NPM} from "./questions/NPM";
-import {mergeBaseAnswerIntoContext, mergeNPMAnswerIntoContext} from "./enricher";
+import {mergeNPMAnswerIntoContext} from "./enricher";
 
 export interface GeneratorContext {
-    folderName: string;
     generatorName: string;
     npm: {
         version: string;
@@ -31,7 +30,6 @@ export default class MyGeneratorToRename extends Generator<GeneratorOptions> imp
 
     public initializing() {
         this.context = {
-            folderName: "",
             generatorName: "",
             npm: {
                 version: "",
@@ -49,11 +47,12 @@ export default class MyGeneratorToRename extends Generator<GeneratorOptions> imp
     }
 
     public async prompting() {
-        const baseAnswer = await this.prompt<Base.Answer>(Base.question);
-        mergeBaseAnswerIntoContext(this.context!, baseAnswer);
-
         const npmAnswer = await this.prompt<NPM.Answer>(NPM.questions);
         mergeNPMAnswerIntoContext(this.context!, npmAnswer);
+    }
+
+    public configuring() {
+        this.config.save();
     }
 
     public writing() {
