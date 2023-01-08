@@ -1,5 +1,5 @@
 Feature: Basic generation
-  A basic generator generation with one prompt and no args
+  A basic generator generation
 
   Scenario: All CICD files have been generated
     Given a generator

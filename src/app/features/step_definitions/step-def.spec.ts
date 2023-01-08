@@ -13,17 +13,22 @@ Given('a generator', function (this: CustomWorld) {
 
 When('I call it with the following prompt answer', async function (this: CustomWorld, dataTable: DataTable) {
     let promptSetup = {
-        name: "default"
+        name: "default",
+        version: "default",
+        description: "default"
     };
 
     type PromptKey = keyof typeof promptSetup;
-    // Write code here that turns the phrase above into concrete actions
-     for (const [prompt, answer] of dataTable.rows()) {
+    for (const [prompt, answer] of dataTable.rows()) {
         promptSetup[prompt as PromptKey] = answer;
-     }
-     this.runContext?.withPrompts(promptSetup);
+    }
+    this.runContext?.withPrompts(promptSetup);
+    try {
+        this.runResult = await this.runContext?.run();
+    } catch (error: unknown) {
+        this.error = error as Error;
+    }
 
-    this.runResult = await this.runContext?.run();
 });
 
 When('I call it with valid prompt', async function (this: CustomWorld) {
@@ -63,3 +68,11 @@ function assertFileExist(this: CustomWorld, dataTable: DataTable){
         this.runResult?.assertFile(filePath);
     }
 }
+
+Then('I should have an error', function (this: CustomWorld) {
+    assert(this.error !== undefined);
+})
+
+Then('the error should contain the message {string}', function (this: CustomWorld, string: string) {
+    assert(this.error?.message === string);
+})
