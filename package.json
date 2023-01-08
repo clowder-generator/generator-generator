@@ -25,9 +25,11 @@
   },
   "devDependencies": {
     "@cucumber/cucumber": "^8.9.1",
+    "@types/chai": "^4.3.4",
     "@types/jest": "^29.2.4",
     "@types/yeoman-generator": "^5.2.11",
     "@types/yeoman-test": "^4.0.3",
+    "chai": "^4.3.7",
     "jest": "^29.3.1",
     "ts-jest": "^29.0.3",
     "ts-node": "^10.9.1",
