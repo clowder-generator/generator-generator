@@ -55,6 +55,11 @@ commands:
       - run: |
           npm install
           npm test
+  feature-test:
+    steps:
+      - run: |
+          npm install
+          npm run it
 
 #==============================================================================
 # Jobs
@@ -65,11 +70,13 @@ jobs:
     steps:
       - checkout
       - test
+      - feature-test
   test-18:
     executor: node_18
     steps:
       - checkout
       - test
+      - feature-test
   deploy:
     executor: node_18
     steps:
