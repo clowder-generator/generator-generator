@@ -6,7 +6,6 @@
   "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"],
   "testPathIgnorePatterns": [
     "/node_modules/",
-    "/src/",
-    "/src-bis/app/features/"
+    "/src/app/features/"
   ]
 }

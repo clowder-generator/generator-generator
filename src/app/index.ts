@@ -1,5 +1,4 @@
 import Generator, {GeneratorOptions} from "yeoman-generator";
-import {Base} from "./questions/Base";
 import {IYeomanGenerator} from "@clowder-generator/utils";
 import {NPM} from "./questions/NPM";
 import {mergeNPMAnswerIntoContext} from "./enricher";

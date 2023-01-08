@@ -14,11 +14,11 @@ export namespace NPM {
             type: "input",
             name: "name" as keyof Answer,
             message: "What will be your package name (it should start with 'generator-') ?",
-            validate: async (input: any): Promise<boolean | string> => {
+            validate: async (input: string): Promise<boolean | string> => {
                 if (isBlank(input)) {
-                    return "The package name cannot be empty"
+                    return "The package name cannot be empty";
                 }
-                return true
+                return true;
             }
         },
         {
@@ -26,11 +26,11 @@ export namespace NPM {
             name: "version" as keyof Answer,
             message: "Version of your generator ?",
             default: "0.1.0",
-            validate: async (input: any): Promise<boolean | string> => {
+            validate: async (input: string): Promise<boolean | string> => {
                 if (isBlank(input)) {
-                    return "The version cannot be empty"
+                    return "The version cannot be empty";
                 }
-                return true
+                return true;
             }
         },
         {

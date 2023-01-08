@@ -13,3 +13,10 @@ Feature: Basic generation
 
       This is a basic file generated using the generator
       """
+
+  Scenario: All config files have been generated
+    Given a generator
+    When I call it with valid prompt
+    Then I should have the following files
+      | fileName     |
+      | generated.md |

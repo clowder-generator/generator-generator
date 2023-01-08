@@ -3,32 +3,36 @@ import {printer} from "./utils";
 import {Base} from "./questions/Base";
 import {IYeomanGenerator} from "@clowder-generator/utils";
 
-interface GeneratorContext {
+export interface GeneratorContext {
     name: string;
 }
 
 export default class <%= index_ts_name %> extends Generator<GeneratorOptions> implements IYeomanGenerator {
 
-    private context: GeneratorContext = {
-        name: ""
-    }
+    private context: GeneratorContext | undefined = undefined;
 
     constructor(args: string, opts: GeneratorOptions) {
         super(args, opts);
     }
 
     public initializing() {
-        printer();
+        context = {
+            name: ""
+        }
     }
 
     public async prompting() {
         const baseAnswer = await this.prompt<Base.Answer>(Base.question);
-        this.context.name = baseAnswer.name;
+        this.context.name = baseAnswer.name; // considere replace direct assignation to enricher to merge response with context
+    }
+
+    public configuring() {
+        // this.config.save();
     }
 
     public writing() {
         this.fs.copyTpl(
-            this.templatePath("*"),
+            this.templatePath("**/*"),
             this.destinationPath(),
             {
                 name: this.context.name

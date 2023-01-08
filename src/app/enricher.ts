@@ -1,4 +1,3 @@
-import {Base} from "./questions/Base";
 import {GeneratorContext} from "./index";
 import {NPM} from "./questions/NPM";
 import {fromKebabCase} from "@clowder-generator/utils";

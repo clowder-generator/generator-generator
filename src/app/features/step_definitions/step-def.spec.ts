@@ -7,7 +7,7 @@ import { expect } from "chai";
 Given('a generator', function (this: CustomWorld) {
     this.runContext = helpers.create(
         path.join(__dirname, "../../../../generators/app")
-    )
+    );
 });
 
 
@@ -71,8 +71,8 @@ function assertFileExist(this: CustomWorld, dataTable: DataTable){
 
 Then('I should have an error', function (this: CustomWorld) {
     expect(this.error).not.to.be.undefined;
-})
+});
 
 Then('the error should contain the message {string}', function (this: CustomWorld, string: string) {
     expect(this.error?.message).to.equals(string)
-})
+});
