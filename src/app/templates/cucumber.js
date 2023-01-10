@@ -4,7 +4,8 @@ module.exports = {
             "src/app/features/**/*.feature"
         ],
         formatOptions: {
-            snippetInterface: "synchronous"
+            snippetInterface: "synchronous",
+
         },
         publishQuiet: true,
         requireModule: [

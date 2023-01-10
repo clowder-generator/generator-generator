@@ -3,9 +3,11 @@ import {CustomWorld} from "./custom-world.spec";
 import assert from "assert";
 import helpers from "yeoman-test";
 import * as path from "path";
-import { expect } from "chai";
+import {expect} from "chai";
+
 Given('a generator', function (this: CustomWorld) {
     this.runContext = helpers.create(
+        // MyGeneratorToRename
         path.join(__dirname, "../../../../generators/app")
     );
 });
@@ -13,6 +15,7 @@ Given('a generator', function (this: CustomWorld) {
 
 When('I call it with the following prompt answer', async function (this: CustomWorld, dataTable: DataTable) {
     let promptSetup = {
+        // TODO - update with your actual prompt values
         name: "default",
         version: "default",
         description: "default"
@@ -33,9 +36,8 @@ When('I call it with the following prompt answer', async function (this: CustomW
 
 When('I call it with valid prompt', async function (this: CustomWorld) {
     let promptSetup = {
-        name: "npm-name-default",
-        version: "npm-version-default",
-        description: "npm-description-default"
+        // TODO - update with your actual prompt value
+        name: "npm-name-default"
     };
 
     this.runContext?.withPrompts(promptSetup);
@@ -44,7 +46,8 @@ When('I call it with valid prompt', async function (this: CustomWorld) {
 
 
 Then('I should have a file {string} with the content', function (this: CustomWorld, string, docString) {
-    // Write code here that turns the phrase above into concrete actions
+    // TODO - remove of update. A lot of unecessary stuff mostly for exploration of
+    //        what can be done or not.
     console.log("string", string)
     console.log("docstring", docString)
     assert(this.runContext !== undefined)
@@ -55,7 +58,6 @@ Then('I should have a file {string} with the content', function (this: CustomWor
 
     this.runResult.assertFileContent("generated.md", docString)
 });
-
 
 Then('I should have the following CICD files', assertFileExist);
 Then('I should have the following config files', assertFileExist);
