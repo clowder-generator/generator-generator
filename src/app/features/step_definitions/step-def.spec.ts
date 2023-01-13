@@ -23,7 +23,8 @@ When('I call it with the following prompt answer', async function (this: CustomW
         promptSetup[prompt as PromptKey] = answer;
     }
 
-    await this.runContext?.withPrompts(promptSetup);
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
+    this.runContext?.withPrompts(promptSetup);
 
     try {
         this.runResult = await this.runContext?.run();
@@ -39,7 +40,8 @@ When('I call it with valid prompt', async function (this: CustomWorld) {
         description: 'npm-description-default'
     };
 
-    await this.runContext?.withPrompts(promptSetup);
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
+    this.runContext?.withPrompts(promptSetup);
     this.runResult = await this.runContext?.run();
 });
 

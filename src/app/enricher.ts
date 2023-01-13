@@ -1,5 +1,5 @@
 import { GeneratorContext } from './index';
-import { NPM } from './questions/NPM';
+import * as NPM from './questions/NPM';
 import { fromKebabCase } from '@clowder-generator/utils';
 
 export const mergeNPMAnswerIntoContext = (generatorContext: GeneratorContext, npmAnswer: NPM.Answer): void => {
