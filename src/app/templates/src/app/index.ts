@@ -1,7 +1,7 @@
-import Generator, {GeneratorOptions} from "yeoman-generator";
-import {printer} from "./utils";
-import {Base} from "./questions/Base";
-import {IYeomanGenerator} from "@clowder-generator/utils";
+import Generator, { GeneratorOptions } from 'yeoman-generator';
+import { printer } from './utils';
+import * as Base from './questions/Base';
+import { IYeomanGenerator } from '@clowder-generator/utils';
 
 export interface GeneratorContext {
     name: string;
