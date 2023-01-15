@@ -11,16 +11,20 @@ Feature: Basic generation
     Given a generator
     When I call it with valid prompt
     Then I should have the following config files
-      | fileName             |
-      | .yo-rc.json          |
-      | .gitignore           |
-      | .nvmrc               |
-      | jestconfig.json      |
-      | package.json         |
-      | README.md            |
-      | tsconfig.json        |
+        | fileName          |
+        | .yo-rc.json       |
+        | .gitignore        |
+        | .nvmrc            |
+        | jestconfig.json   |
+        | package.json      |
+        | README.md         |
+        | tsconfig.json     |
+        | .editorconfig     |
+        | .eslintignore     |
+        | .eslintrc.js      |
+        | .husky/pre-commit |
 
-  Scenario: All src files have been generated
+    Scenario: All src files have been generated
     Given a generator
     When I call it with valid prompt
     Then I should have the following sources files
