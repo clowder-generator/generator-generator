@@ -1,7 +1,7 @@
-import Generator, {GeneratorOptions} from "yeoman-generator";
-import {IYeomanGenerator} from "@clowder-generator/utils";
-import {NPM} from "./questions/NPM";
-import {mergeNPMAnswerIntoContext} from "./enricher";
+import Generator, { GeneratorOptions } from 'yeoman-generator';
+import { IYeomanGenerator } from '@clowder-generator/utils';
+import * as NPM from './questions/NPM';
+import { mergeNPMAnswerIntoContext } from './enricher';
 
 export interface GeneratorContext {
     generatorName: string;
@@ -9,54 +9,56 @@ export interface GeneratorContext {
         version: string;
         name: string;
         description: string;
-    }
+    };
     readme: {
         name: string;
+        // eslint-disable-next-line
         description: string;
-    }
+    };
     circleci: {
         tokenSuffix: string;
-    }
+    };
 }
 
 export default class MyGeneratorToRename extends Generator<GeneratorOptions> implements IYeomanGenerator {
-
     private context: GeneratorContext | undefined = undefined;
 
+    // eslint-disable-next-line @typescript-eslint/no-useless-constructor
     constructor(args: string, opts: GeneratorOptions) {
         super(args, opts);
     }
 
-    public initializing() {
+    public initializing(): void {
         this.context = {
-            generatorName: "",
+            generatorName: '',
             npm: {
-                version: "",
-                name: "",
-                description: ""
+                version: '',
+                name: '',
+                description: ''
             },
             readme: {
-                name: "",
-                description: ""
+                name: '',
+                description: ''
             },
             circleci: {
-                tokenSuffix: ""
+                tokenSuffix: ''
             }
-        }
+        };
     }
 
-    public async prompting() {
+    public async prompting(): Promise<void> {
         const npmAnswer = await this.prompt<NPM.Answer>(NPM.questions);
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         mergeNPMAnswerIntoContext(this.context!, npmAnswer);
     }
 
-    public configuring() {
+    public configuring(): void {
         this.config.save();
     }
 
-    public writing() {
+    public writing(): void {
         this.fs.copyTpl(
-            this.templatePath("**/*"),
+            this.templatePath('**/*'),
             this.destinationPath(),
             {
                 index_ts_name: this.context?.generatorName,
@@ -68,8 +70,11 @@ export default class MyGeneratorToRename extends Generator<GeneratorOptions> imp
                 npm_description: this.context?.npm.description
             },
             undefined,
-            {globOptions: {dot: true}}
+            {
+                globOptions: {
+                    dot: true
+                }
+            }
         );
     }
-
 }
