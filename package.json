@@ -1,6 +1,6 @@
 {
     "name": "@clowder-generator/generator-generator",
-    "version": "0.3.3",
+    "version": "0.3.4",
     "description": "A generator to create new generators in typescript and test support",
     "files": [
         "generators"
