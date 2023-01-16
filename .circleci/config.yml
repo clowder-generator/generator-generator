@@ -112,16 +112,20 @@ workflows:
       - test-16:
           <<: *project_context
           <<: *release_tag_filter
+          post-steps:
+            - jira/notify:
+                job_type: build
+                scan_commit_body: true
       - test-18:
-          <<: *project_context
-          <<: *release_tag_filter
-      - deploy:
           <<: *project_context
           <<: *release_tag_filter
           post-steps:
             - jira/notify:
-                environment_type: production
-                job_type: deployment
+                job_type: build
+                scan_commit_body: true
+      - deploy:
+          <<: *project_context
+          <<: *release_tag_filter
           requires:
             - test-16
             - test-18
