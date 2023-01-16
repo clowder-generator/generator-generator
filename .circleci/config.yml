@@ -99,9 +99,15 @@ workflows:
       - test-16:
           <<: *project_context
           <<: *no_tag_filter
+          post-steps:
+            - jira/notify:
+                job_type: build
       - test-18:
           <<: *project_context
           <<: *no_tag_filter
+          post-steps:
+            - jira/notify:
+                job_type: build
 
   #
   # When a release tag is pushed, this pipeline will retest everything
@@ -112,17 +118,9 @@ workflows:
       - test-16:
           <<: *project_context
           <<: *release_tag_filter
-          post-steps:
-            - jira/notify:
-                job_type: build
-                scan_commit_body: true
       - test-18:
           <<: *project_context
           <<: *release_tag_filter
-          post-steps:
-            - jira/notify:
-                job_type: build
-                scan_commit_body: true
       - deploy:
           <<: *project_context
           <<: *release_tag_filter
