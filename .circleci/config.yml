@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  jira: circleci/jira@1.3.1
+
 #==============================================================================
 # Executors
 #==============================================================================
@@ -120,6 +123,10 @@ workflows:
       - deploy:
           <<: *docker_and_npm_context
           <<: *release_tag_filter
+          post-steps:
+            - jira/notify:
+                environment_type: production
+                job_type: deployment
           requires:
             - test-16
             - test-18
