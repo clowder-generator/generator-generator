@@ -80,7 +80,7 @@ jobs:
     steps:
       - checkout
       - run: |
-          npm config set _authToken=$MY_CIRCLECI_NPM_TOKEN_CLOWDER_GENERATOR_GENERATOR
+          npm config set _authToken=$MY_CIRCLECI_NPM_TOKEN
           npm install
           npm run build
           npm publish --access public

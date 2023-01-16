@@ -16,7 +16,7 @@ export interface GeneratorContext {
         description: string;
     };
     circleci: {
-        tokenSuffix: string;
+        contextName: string;
     };
 }
 
@@ -41,7 +41,7 @@ export default class MyGeneratorToRename extends Generator<GeneratorOptions> imp
                 description: ''
             },
             circleci: {
-                tokenSuffix: ''
+                contextName: ''
             }
         };
     }
@@ -62,7 +62,7 @@ export default class MyGeneratorToRename extends Generator<GeneratorOptions> imp
             this.destinationPath(),
             {
                 index_ts_name: this.context?.generatorName,
-                circleci_name: this.context?.circleci.tokenSuffix,
+                circleci_name: this.context?.circleci.contextName,
                 readme_name: this.context?.readme.name,
                 readme_description: this.context?.readme.description,
                 npm_name: this.context?.npm.name,

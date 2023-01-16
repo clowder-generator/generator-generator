@@ -13,5 +13,8 @@ export const mergeNPMAnswerIntoContext = (generatorContext: GeneratorContext, np
     generatorContext.readme.name = fromKebabCase(npmAnswer.name).toScreamingKebabCase();
     generatorContext.readme.description = npmAnswer.description || '';
 
-    generatorContext.circleci.tokenSuffix = fromKebabCase(npmAnswer.name).toScreamingSnakeCase();
+    // TODO: might have to review the fromKebab..toKebab. For now it is only use to
+    //       validate that we indeed have a kebabCase, but later on it will be the
+    //       responsibility of the validator function in the prompt.
+    generatorContext.circleci.contextName = fromKebabCase(npmAnswer.name).toKebabCase();
 };
