@@ -12,7 +12,7 @@
     "license": "ISC",
     "scripts": {
         "clean": "rm -rf generators",
-        "test": "jest --config jestconfig.json --passWithNoTests",
+        "test": "jest --config jest.config.json --passWithNoTests",
         "preit": "npm run build",
         "it": "cucumber-js",
         "postit": "npm run clean",
@@ -23,7 +23,7 @@
         "prepare": "husky install"
     },
     "dependencies": {
-        "@clowder-generator/utils": "^0.6.0",
+        "@clowder-generator/utils": "^0.7.0",
         "yeoman-generator": "^5.7.0"
     },
     "devDependencies": {

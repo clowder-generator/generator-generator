@@ -15,7 +15,7 @@ Feature: Basic generation
             | .yo-rc.json       |
             | .gitignore        |
             | .nvmrc            |
-            | jestconfig.json   |
+            | jest.config.json  |
             | package.json      |
             | README.md         |
             | LICENSE.md        |
