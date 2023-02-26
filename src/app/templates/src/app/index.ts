@@ -6,7 +6,7 @@ export interface GeneratorContext {
     name: string;
 }
 
-export default class GeneratorKata extends Generator<GeneratorOptions> implements IYeomanGenerator {
+export default class <%= index_ts_name %> extends Generator<GeneratorOptions> implements IYeomanGenerator {
     private context: GeneratorContext | undefined = undefined;
 
     // eslint-disable-next-line @typescript-eslint/no-useless-constructor
